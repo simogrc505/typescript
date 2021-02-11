@@ -1,6 +1,6 @@
 import { CartInterface } from '../interfaces/cart'
 import { ProductInterface } from '../interfaces/product'
-const send_data = require('../microservices/send_data')
+import HTTPRquest from '../microservices/send_data'
 
 export class Cart implements CartInterface {
   products: ProductInterface[];
@@ -29,7 +29,7 @@ export class Cart implements CartInterface {
       });
     }
   }
-
+  // il tag è un parametro opzionale
   getTotalPrice(tag?: string): number {
     if (!tag) {
       return this.products.reduce((a, b) => +a + +b.price, 0);
@@ -47,7 +47,8 @@ export class Cart implements CartInterface {
     return this.products.filter(e => e.id !== id)
   }
 
-  sendData(array: ProductInterface[]) {
-    return send_data(array)
+  async sendData(array: Number[]) {
+    const request = new HTTPRquest();
+    return await request.uploadFile(array)
   }
 }

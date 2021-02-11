@@ -8,5 +8,5 @@ export interface CartInterface {
   getProductsOrderedByPrice(sort: 'asc' | 'desc'): ProductInterface[]
   emptyCart(): never[]
   getTotalPrice(tag?: string): number
-  sendData(products: ProductInterface[]): Promise<any>
+  sendData(products: Number[]): Promise<any>
 }
