@@ -4,7 +4,7 @@ var request = require('request');
 var HTTPRequest = /** @class */ (function () {
     function HTTPRequest() {
     }
-    HTTPRequest.prototype.uploadFile = function (data) {
+    HTTPRequest.prototype.uploadData = function (data) {
         return new Promise(function (resolve, reject) {
             request({
                 uri: 'https://api.mocki.io/v1/30eb2463',
@@ -16,7 +16,7 @@ var HTTPRequest = /** @class */ (function () {
                     return reject(err);
                 }
                 if (response.statusCode >= 300) {
-                    return resolve(null);
+                    return resolve({});
                 }
                 return resolve(response.body);
             });

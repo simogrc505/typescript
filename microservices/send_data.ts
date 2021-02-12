@@ -1,7 +1,7 @@
 const request = require('request')
 
 export default class HTTPRequest {
-  public uploadFile(data: Number[]) {
+  public uploadData(data: object): Promise<object> {
     return new Promise((resolve, reject) => {
       request({
         uri: 'https://api.mocki.io/v1/30eb2463',
@@ -14,7 +14,7 @@ export default class HTTPRequest {
         }
 
         if (response.statusCode >= 300) {
-          return resolve(null)
+          return resolve({})
         }
 
         return resolve(response.body)

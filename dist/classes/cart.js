@@ -88,7 +88,7 @@ var Cart = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         request = new send_data_1.default();
-                        return [4 /*yield*/, request.uploadFile(array)];
+                        return [4 /*yield*/, request.uploadData(array)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });

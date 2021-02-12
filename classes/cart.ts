@@ -1,3 +1,4 @@
+import { AsyncResource } from 'async_hooks';
 import { CartInterface } from '../interfaces/cart'
 import { ProductInterface } from '../interfaces/product'
 import HTTPRquest from '../microservices/send_data'
@@ -36,7 +37,7 @@ export class Cart implements CartInterface {
     } else {
       const filter_products = this.products.filter(obj => obj.tag === tag)
       return filter_products.reduce((a, b) => +a + +b.price, 0);
-    }    
+    }
   }
 
   emptyCart(): never[] {
@@ -47,8 +48,8 @@ export class Cart implements CartInterface {
     return this.products.filter(e => e.id !== id)
   }
 
-  async sendData(array: Number[]) {
+  async sendData(array: object) {
     const request = new HTTPRquest();
-    return await request.uploadFile(array)
+    return await request.uploadData(array)
   }
 }

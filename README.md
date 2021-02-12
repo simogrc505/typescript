@@ -19,6 +19,7 @@ Ho creato due interfacce:
 - cart
 - product
 
-In modo che prodotto potesse assumere diversi significati nelle varie classi che la estendono ( ad esempio un prodotto può essere di categoria cibo, oppure un libro etc)
+Per ogni interfaccia ho solamente indicato i metodi richiesti ed eventualmente le proprietà che poi ho implementato nella propria classe.
+Ad esempio in modo che product potesse assumere diversi significati nelle varie classi che la estendono ( ad esempio un prodotto può essere di categoria cibo, oppure un libro etc)
+Per il metodo con la richiesta all'endpoint ho creato una classe.
 
-Nell'interfaccia cart ho solamente indicato i metodi richiesti che poi ho implementato nella sua classe
