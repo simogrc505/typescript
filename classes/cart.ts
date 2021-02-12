@@ -1,4 +1,3 @@
-import { AsyncResource } from 'async_hooks';
 import { CartInterface } from '../interfaces/cart'
 import { ProductInterface } from '../interfaces/product'
 import HTTPRquest from '../microservices/send_data'
@@ -9,12 +8,12 @@ export class Cart implements CartInterface {
   constructor(products: ProductInterface[]) {
     this.products = products;
   }
-
+// aggiungo prodotto all'array
   addProduct(p: ProductInterface) {
     this.products.push(p);
     return this.products
   }
-
+// NON richiesto : ordino prodotti in asc o desc
   getProductsOrderedByPrice(sort: "asc" | "desc"): ProductInterface[] {
     if (sort === "asc") {
       return this.products.sort((p1, p2) => {
@@ -30,7 +29,7 @@ export class Cart implements CartInterface {
       });
     }
   }
-  // il tag è un parametro opzionale
+  // il tag è un parametro opzionale, se c'è devo filtrare solo per quel tag
   getTotalPrice(tag?: string): number {
     if (!tag) {
       return this.products.reduce((a, b) => +a + +b.price, 0);
@@ -39,11 +38,11 @@ export class Cart implements CartInterface {
       return filter_products.reduce((a, b) => +a + +b.price, 0);
     }
   }
-
+ // ritorno array vuoto
   emptyCart(): never[] {
     return this.products = []
   }
-
+// filtro l'array con gli id diversi da quello che voglio cancellare
   deleteProduct(id: string) {
     return this.products.filter(e => e.id !== id)
   }

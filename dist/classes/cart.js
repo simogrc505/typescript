@@ -45,10 +45,12 @@ var Cart = /** @class */ (function () {
     function Cart(products) {
         this.products = products;
     }
+    // aggiungo prodotto all'array
     Cart.prototype.addProduct = function (p) {
         this.products.push(p);
         return this.products;
     };
+    // NON richiesto : ordino prodotti in asc o desc
     Cart.prototype.getProductsOrderedByPrice = function (sort) {
         if (sort === "asc") {
             return this.products.sort(function (p1, p2) {
@@ -65,7 +67,7 @@ var Cart = /** @class */ (function () {
             });
         }
     };
-    // il tag è un parametro opzionale
+    // il tag è un parametro opzionale, se c'è devo filtrare solo per quel tag
     Cart.prototype.getTotalPrice = function (tag) {
         if (!tag) {
             return this.products.reduce(function (a, b) { return +a + +b.price; }, 0);
@@ -75,9 +77,11 @@ var Cart = /** @class */ (function () {
             return filter_products.reduce(function (a, b) { return +a + +b.price; }, 0);
         }
     };
+    // ritorno array vuoto
     Cart.prototype.emptyCart = function () {
         return this.products = [];
     };
+    // filtro l'array con gli id diversi da quello che voglio cancellare
     Cart.prototype.deleteProduct = function (id) {
         return this.products.filter(function (e) { return e.id !== id; });
     };
